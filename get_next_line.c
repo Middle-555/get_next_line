@@ -6,7 +6,7 @@
 /*   By: kpourcel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 14:04:16 by kpourcel          #+#    #+#             */
-/*   Updated: 2023/11/23 18:22:14 by kpourcel         ###   ########.fr       */
+/*   Updated: 2023/11/23 19:11:23 by kpourcel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ char	*ft_seg_line(char *stash)
 	}
 	new_line = i + 2; /* +2 car ajout du \n et \0*/
 	line = ft_calloc(new_line, sizeof(char));
-	while (stash[i] != '\n')
+	while (!stash[i] && stash[i] != '\n')
 	{
 		line[i] = stash[i];
 		i++;
