@@ -6,7 +6,7 @@
 /*   By: kpourcel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 14:04:16 by kpourcel          #+#    #+#             */
-/*   Updated: 2023/11/22 17:32:00 by kpourcel         ###   ########.fr       */
+/*   Updated: 2023/11/22 17:35:01 by kpourcel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 char	*get_next_line(int fd)
 {
 	static char	*buffer[4096];
-	char	*line;
-	
+	char		*line;
+
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	
@@ -32,7 +32,7 @@ char	read_and_stock(int fd, char *buff)
 
 	if (!buff) /* Si le buff est vide on le créer et lui alloue 1 octet pour pouvoir join par la suite. */ 
 		buff = malloc(sizeof(char) * 1);
-	stash = malloc(BUFFER_SIZE + 1), sizeof(char);
+	stash = malloc((BUFFER_SIZE + 1), sizeof(char));
 	already_read = 1; /* On initialise à 1 pour avoir au minimum 1 itération. */ 
 	while(already_read > 0)
 	{

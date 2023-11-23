@@ -6,13 +6,13 @@
 /*   By: kpourcel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 14:04:50 by kpourcel          #+#    #+#             */
-/*   Updated: 2023/11/21 17:34:36 by kpourcel         ###   ########.fr       */
+/*   Updated: 2023/11/23 15:28:33 by kpourcel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-// Permet de trouver un caractère choisit dans un tableau / une chaine de caractère. 
+/*Permet de trouver un caractère choisit dans un tableau / une chaine de caractère.*/
 char	*ft_strchr(const char *s, int c)
 {
 	while (*s != '\0' && (unsigned char)c != *s)
@@ -22,7 +22,7 @@ char	*ft_strchr(const char *s, int c)
 	return (0);
 }
 
-// Permet de malloc + cat deux chaines vers une 3 ème. 
+/* Permet de malloc + cat deux chaines vers une 3 ème. */
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	size_t	i;
@@ -48,7 +48,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (s3);
 }
 
-// Donne la taille d'une chaine de caractère
+/* Donne la taille d'une chaine de caractère */
 size_t	ft_strlen(const char *s)
 {
 	size_t	i;
@@ -59,3 +59,15 @@ size_t	ft_strlen(const char *s)
 	return (i);
 }
 
+/* Permet de rajouter le \0 que l'on recherchera plus tard */
+void	ft_bzero(void *s, size_t n)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < n)
+	{
+		*(unsigned char *)(s + i) = '\0';
+		i++;
+	}
+}
