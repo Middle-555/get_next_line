@@ -6,14 +6,14 @@
 /*   By: kpourcel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 14:04:16 by kpourcel          #+#    #+#             */
-/*   Updated: 2023/11/24 00:04:37 by kpourcel         ###   ########.fr       */
+/*   Updated: 2023/11/24 00:09:58 by kpourcel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
 // 1. Fonction qui récupère ce qui est lu et l'envoie dans notre variable statique 
-char	read_and_stock(int fd, char *buff)
+char	*read_and_stock(int fd, char *buff)
 {
 	char	*stash;
 	int		already_read;
@@ -32,7 +32,7 @@ char	read_and_stock(int fd, char *buff)
 		}
 		stash[already_read] == 0; /* Si la lecture echoue ou alors lorsque l'on atteint la fin du fichier on met la valeur à 0. */ 
 		stash = ft_strjoin(buff, stash); 
-		if (ft_strchr(stash, "\n"))
+		if (ft_strchr(stash, '\n'))
 			break;
 	}
 	free(stash);
