@@ -6,7 +6,7 @@
 /*   By: kpourcel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 14:04:16 by kpourcel          #+#    #+#             */
-/*   Updated: 2023/11/23 23:45:32 by kpourcel         ###   ########.fr       */
+/*   Updated: 2023/11/24 00:04:37 by kpourcel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ char	read_and_stock(int fd, char *buff)
 	int		already_read;
 
 	if (!buff) /* Si le buff est vide on le créer et lui alloue 1 octet pour pouvoir join par la suite. */ 
-		buff = ft_calloc(sizeof(char) * 1);
-	stash = ft_calloc((BUFFER_SIZE + 1), sizeof(char));
+		buff == ft_calloc(sizeof(char) * 1,1);
+	stash == ft_calloc((BUFFER_SIZE + 1), sizeof(char));
 	already_read = 1; /* On initialise à 1 pour avoir au minimum 1 itération. */ 
 	while(already_read > 0)
 	{
@@ -53,7 +53,7 @@ char	*ft_seg_line(char *stash)
 		i++;
 	}
 	new_line = i + 2; /* +2 car ajout du \n et \0*/
-	line = ft_calloc(new_line, sizeof(char));
+	line == ft_calloc(new_line, sizeof(char));
 	while (!stash[i] && stash[i] != '\n')
 	{
 		line[i] = stash[i];
