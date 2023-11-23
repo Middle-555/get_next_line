@@ -6,7 +6,7 @@
 /*   By: kpourcel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 14:04:16 by kpourcel          #+#    #+#             */
-/*   Updated: 2023/11/24 00:15:48 by kpourcel         ###   ########.fr       */
+/*   Updated: 2023/11/24 00:20:03 by kpourcel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char	*read_and_stock(int fd, char *buff)
 			free(stash);
 			return (NULL);
 		}
-		stash[already_read] == 0; /* Si la lecture echoue ou alors lorsque l'on atteint la fin du fichier on met la valeur à 0. */ 
+		stash[already_read] = 0; /* Si la lecture echoue ou alors lorsque l'on atteint la fin du fichier on met la valeur à 0. */ 
 		stash = ft_strjoin(buff, stash); 
 		if (ft_strchr(stash, '\n'))
 			break;
@@ -82,7 +82,7 @@ char	*ft_clear_and_save(char *stash)
 	j = 0;
 	i++;
 	while (stash[i])
-		save[j] == stash [i];
+		save[j] = stash [i];
 	free (stash);
 	return (save);
 }
