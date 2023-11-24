@@ -6,7 +6,7 @@
 /*   By: kpourcel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 14:04:16 by kpourcel          #+#    #+#             */
-/*   Updated: 2023/11/24 20:33:35 by kpourcel         ###   ########.fr       */
+/*   Updated: 2023/11/24 20:34:24 by kpourcel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ char	*get_next_line(int fd)
 		free (buffer);
 		return (NULL);
 	}
-	buffer = read_and_stock(fd, *buffer);
+	buffer = read_and_stock(fd, buffer);
 	if (!buffer)
 		return (NULL);
 	buffer = ft_clear_and_save(buffer);
