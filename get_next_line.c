@@ -6,7 +6,7 @@
 /*   By: kpourcel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 14:04:16 by kpourcel          #+#    #+#             */
-/*   Updated: 2023/11/24 04:13:46 by kpourcel         ###   ########.fr       */
+/*   Updated: 2023/11/24 20:24:53 by kpourcel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ char	*get_next_line(int fd)
 
 	i = 0;
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) == -1)
-		return (free(buffer), buffer == NULL);
+		return (free(buffer), buffer == NULL, NULL);
 	buffer[i] = read_and_stock(fd, buffer);
 	if (!buffer)
 		return (NULL);
