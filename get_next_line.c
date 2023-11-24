@@ -6,7 +6,7 @@
 /*   By: kpourcel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 14:04:16 by kpourcel          #+#    #+#             */
-/*   Updated: 2023/11/24 00:20:03 by kpourcel         ###   ########.fr       */
+/*   Updated: 2023/11/24 04:13:46 by kpourcel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ char	*ft_clear_and_save(char *stash)
 
 char	*get_next_line(int fd)
 {
-	static char	*buffer[4096];
+	static char	*buffer[BUFFER_SIZE + 1];
 	int		i;
 	char		*line;
 
