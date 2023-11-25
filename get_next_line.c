@@ -6,7 +6,7 @@
 /*   By: kpourcel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 14:04:16 by kpourcel          #+#    #+#             */
-/*   Updated: 2023/11/24 21:54:55 by kpourcel         ###   ########.fr       */
+/*   Updated: 2023/11/25 18:57:07 by kpourcel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ char	*read_and_stock(int fd, char *buff)
 
 	if (!buff) /* Si le buff est vide on le créer et lui alloue 1 octet pour pouvoir join par la suite. */ 
 		buff = ft_calloc(1,1);
-	stash = ft_calloc((BUFFER_SIZE + 1), sizeof(char));
 	already_read = 1; /* On initialise à 1 pour avoir au minimum 1 itération. */ 
+	stash = ft_calloc((BUFFER_SIZE + 1), sizeof(char));
 	while(already_read > 0)
 	{
 		already_read = read(fd, stash, BUFFER_SIZE);
@@ -48,17 +48,19 @@ char	*ft_seg_line(char *stash)
 	i = 0;
 	if (!stash)
 		return (NULL);
-	while(!stash[i] && stash[i] != '\n')
+	while(stash[i] && stash[i] != '\n')
 	{
 		i++;
 	}
 	new_line = i + 2; /* +2 car ajout du \n et \0*/
 	line = ft_calloc(new_line, sizeof(char));
-	while (!stash[i] && stash[i] != '\n')
+	while (stash[i] && stash[i] != '\n')
 	{
 		line[i] = stash[i];
 		i++;
 	}
+	if (stash[i] && stash[i] == '\n')
+		line[i] = '\n';
 	return (line);
 }
 // 3. Fonction qui clear tout ce qu'il y a avant le "\n" et garde que le reste. 
@@ -66,23 +68,25 @@ char	*ft_clear_and_save(char *stash)
 {
 	int		i;
 	int		j;
-	int		new_line;
 	char	*save;
 
 	i = 0;
-	while (!stash[i] && stash[i] != '\n')
+	while (stash[i] && stash[i] != '\n')
 		i++;
-	new_line = i;
 	if (!stash[i])
 	{
 		free(stash);
 		return (NULL);
 	}
-	save = ft_calloc((ft_strlen(stash) - new_line + 1), sizeof(char));
-	j = 0;
+	save = ft_calloc((ft_strlen(stash) - i + 1), sizeof(char));
 	i++;
+	j = 0;
 	while (stash[i])
-		save[j] = stash [i];
+	{
+		save[j] = stash[i];
+		i++;
+		j++;
+	}
 	free (stash);
 	return (save);
 }
@@ -100,8 +104,8 @@ char	*get_next_line(int fd)
 	buffer = read_and_stock(fd, buffer);
 	if (!buffer)
 		return (NULL);
-	buffer = ft_clear_and_save(buffer);
 	line = ft_seg_line(buffer);
+	buffer = ft_clear_and_save(buffer);
 	return (line);	
 }
  

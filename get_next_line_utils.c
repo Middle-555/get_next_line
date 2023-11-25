@@ -6,20 +6,22 @@
 /*   By: kpourcel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 14:04:50 by kpourcel          #+#    #+#             */
-/*   Updated: 2023/11/24 21:53:26 by kpourcel         ###   ########.fr       */
+/*   Updated: 2023/11/25 18:56:23 by kpourcel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
 /*Permet de trouver un caractère choisit dans un tableau / une chaine de caractère.*/
-char	*ft_strchr(const char *s, int c)
+char    *ft_strchr(const char *s, int c)
 {
-	while (*s != '\0' && (unsigned char)c != *s)
-		s++;
-	if ((unsigned char)c == *s)
-		return ((char *)s);
-	return (0);
+    while (*s != (char)c)
+    {
+        if (*s == '\0')
+            return (NULL);
+        s++;
+    }
+    return ((char *)s);
 }
 
 /* Permet de malloc + cat deux chaines vers une 3 ème. */
@@ -43,8 +45,9 @@ char	*ft_strjoin(char *s1, char const *s2)
 	{
 		s3[i] = s2[k];
 		k++;
+		i++;
 	}
-	s3[i + k] = '\0';
+	s3[i] = '\0';
 	free (s1);
 	return (s3);
 }
@@ -66,11 +69,13 @@ size_t	ft_strlen(const char *s)
 void	ft_bzero(void *s, size_t n)
 {
 	size_t	i;
+	char	*s1;
 
 	i = 0;
+	s1 = (char *)(s);
 	while (i < n)
 	{
-		*(unsigned char *)(s + i) = '\0';
+		s1[i] = '\0';
 		i++;
 	}
 }
@@ -79,7 +84,7 @@ void	ft_bzero(void *s, size_t n)
 
 void	*ft_calloc(size_t nbr, size_t size)
 {
-	char	*s1;
+	void	*s1;
 
 	s1 = malloc(nbr * size);
 	if (!s1)
