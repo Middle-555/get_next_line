@@ -6,7 +6,7 @@
 /*   By: kpourcel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 19:15:38 by kpourcel          #+#    #+#             */
-/*   Updated: 2023/11/27 19:16:27 by kpourcel         ###   ########.fr       */
+/*   Updated: 2023/11/27 19:19:58 by kpourcel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,19 +97,19 @@ char	*ft_clear_and_save(char *stash)
 
 char	*get_next_line(int fd)
 {
-	static char	*buffer = NULL;
+	static char	*buffer[4096];
 	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || read (fd, 0, 0) < 0)
 	{
-		free (buffer);
-		buffer = (NULL);
+		free (buffer[fd]);
+		buffer[fd] = (NULL);
 		return (NULL);
 	}
-	buffer = read_and_stock(fd, buffer);
-	if (!buffer)
+	buffer[fd] = read_and_stock(fd, buffer);
+	if (!buffer[fd])
 		return (NULL);
-	line = ft_seg_line(buffer);
-	buffer = ft_clear_and_save(buffer);
+	line = ft_seg_line(buffer[fd]);
+	buffer[fd] = ft_clear_and_save(buffer[fd]);
 	return (line);
 }
