@@ -6,7 +6,7 @@
 /*   By: kpourcel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 14:04:50 by kpourcel          #+#    #+#             */
-/*   Updated: 2023/11/27 16:47:10 by kpourcel         ###   ########.fr       */
+/*   Updated: 2023/11/27 16:52:34 by kpourcel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ char	*ft_strchr(const char *s, int c)
 /* Permet de malloc + cat deux chaines vers une 3 ème. */
 char	*ft_strjoin(char *s1, char *s2)
 {
-	size_t	i;
-	size_t	k;
+	int		i;
+	int		k;
 	char	*s3;
 
 	if (!s1)
@@ -42,18 +42,12 @@ char	*ft_strjoin(char *s1, char *s2)
 	s3 = malloc(sizeof(char) * ((ft_strlen(s1) + ft_strlen(s2)) + 1));
 	if (!s3)
 		return (NULL);
-	i = 0;
-	while (s1[i])
-	{
+	i = -1;
+	while (s1[++i])
 		s3[i] = s1[i];
-		i++;
-	}
-	k = 0;
-	while (s2[k])
-	{
+	k = -1;
+	while (s2[++k])
 		s3[i + k] = s2[k];
-		k++;
-	}
 	s3[i + k] = '\0';
 	free (s1);
 	return (s3);
