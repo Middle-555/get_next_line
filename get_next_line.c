@@ -6,7 +6,7 @@
 /*   By: kpourcel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 14:04:16 by kpourcel          #+#    #+#             */
-/*   Updated: 2023/11/27 18:53:06 by kpourcel         ###   ########.fr       */
+/*   Updated: 2023/11/27 19:11:37 by kpourcel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,25 +19,26 @@ char	*read_and_stock(int fd, char *buff)
 	char	*stash;
 	int		already_read;
 
-	already_read = 1; /* On initialise à 1 pour avoir au minimum 1 itération. */ 
+	already_read = 1;
 	stash = ft_calloc((BUFFER_SIZE + 1), sizeof(char));
-	while(already_read != 0)
+	while (already_read != 0)
 	{
 		already_read = read(fd, stash, BUFFER_SIZE);
-		if (already_read == -1) /* En cas d'érreur de lecture on return -1 et free.  */
+		if (already_read == -1)
 		{
 			free(stash);
 			return (NULL);
 		}
-		stash[already_read] = 0; /* Si la lecture echoue ou alors lorsque l'on atteint la fin du fichier on met la valeur à 0. */ 
-		buff = ft_strjoin(buff, stash);	
+		stash[already_read] = 0;
+		buff = ft_strjoin(buff, stash);
 		if (ft_strchr(stash, '\n'))
-			break;
+			break ;
 	}
 	free (stash);
 	return (buff);
 }
 /* 2. This function read until it find a '\n' and save it in stash. */
+
 char	*ft_seg_line(char *stash)
 {
 	char	*line;
@@ -48,10 +49,8 @@ char	*ft_seg_line(char *stash)
 	if (!stash[i])
 		return (NULL);
 	while (stash[i] && stash[i] != '\n')
-        {
-                i++;
-        }
-	new_line = i + 2; /* +2 car ajout du \n et \0*/
+		i++;
+	new_line = i + 2;
 	i = 0;
 	line = ft_calloc(new_line, sizeof(char));
 	if (!line)
@@ -66,6 +65,7 @@ char	*ft_seg_line(char *stash)
 	return (line);
 }
 // 3. Fonction qui clear tout ce qu'il y a avant le "\n" et garde que le reste. 
+
 char	*ft_clear_and_save(char *stash)
 {
 	int		i;
@@ -100,7 +100,7 @@ char	*get_next_line(int fd)
 	static char	*buffer = NULL;
 	char		*line;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || read (fd,0,0) < 0)
+	if (fd < 0 || BUFFER_SIZE <= 0 || read (fd, 0, 0) < 0)
 	{
 		free (buffer);
 		buffer = (NULL);
@@ -111,5 +111,5 @@ char	*get_next_line(int fd)
 		return (NULL);
 	line = ft_seg_line(buffer);
 	buffer = ft_clear_and_save(buffer);
-	return (line);	
+	return (line);
 }
