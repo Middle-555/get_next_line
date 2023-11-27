@@ -6,20 +6,20 @@
 /*   By: kpourcel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 14:04:20 by kpourcel          #+#    #+#             */
-/*   Updated: 2023/11/27 16:10:23 by sbarbe           ###   ########.fr       */
+/*   Updated: 2023/11/27 18:59:23 by kpourcel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	GET_NEXT_LINE_H
+#ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
 # include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
 
-#ifndef BUFFER_SIZE
-# define BUFFER_SIZE 1
-#endif
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1
+# endif
 
 char	*ft_strchr(const char *s, int c);
 char	*ft_strjoin(char *s1, char *s2);
