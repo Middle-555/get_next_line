@@ -6,7 +6,7 @@
 /*   By: kpourcel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 14:04:50 by kpourcel          #+#    #+#             */
-/*   Updated: 2023/11/27 16:52:34 by kpourcel         ###   ########.fr       */
+/*   Updated: 2023/11/27 17:18:11 by kpourcel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 /*Permet de trouver un caractère choisit dans un tableau 
 / une chaine de caractère.*/
-char	*ft_strchr(const char *s, int c)
+char	*ft_strchr(const char *s1, int c)
 {
-	while (*s != (char)c)
+	while (*s1 != (char)c)
 	{
-		if (*s == '\0')
+		if (*s1 == '\0')
 			return (NULL);
-		s++;
+		s1++;
 	}
-	return ((char *)s);
+	return ((char *)s1);
 }
 
 /* Permet de malloc + cat deux chaines vers une 3 ème. */
