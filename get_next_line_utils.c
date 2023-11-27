@@ -6,22 +6,23 @@
 /*   By: kpourcel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 14:04:50 by kpourcel          #+#    #+#             */
-/*   Updated: 2023/11/27 16:16:51 by kpourcel         ###   ########.fr       */
+/*   Updated: 2023/11/27 16:41:22 by kpourcel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-/*Permet de trouver un caractère choisit dans un tableau / une chaine de caractère.*/
-char    *ft_strchr(const char *s, int c)
+/*Permet de trouver un caractère choisit dans un tableau 
+/ une chaine de caractère.*/
+char	*ft_strchr(const char *s, int c)
 {
-    while (*s != (char)c)
-    {
-        if (*s == '\0')
-            return (NULL);
-        s++;
-    }
-    return ((char *)s);
+	while (*s != (char)c)
+	{
+		if (*s == '\0')
+			return (NULL);
+		s++;
+	}
+	return ((char *)s);
 }
 
 /* Permet de malloc + cat deux chaines vers une 3 ème. */
@@ -41,13 +42,9 @@ char	*ft_strjoin(char *s1, char *s2)
 	s3 = malloc(sizeof(char) * ((ft_strlen(s1) + ft_strlen(s2)) + 1));
 	if (!s3)
 		return (NULL);
-	i = 0;
-	while (s1[i])
-	{
+	i = -1;
+	while (s1[i++])
 		s3[i] = s1[i];
-		i++;
-	}
-	k = 0;
 	while (s2[k])
 	{
 		s3[i + k] = s2[k];

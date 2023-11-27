@@ -6,13 +6,14 @@
 /*   By: kpourcel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 14:04:16 by kpourcel          #+#    #+#             */
-/*   Updated: 2023/11/27 16:09:57 by sbarbe           ###   ########.fr       */
+/*   Updated: 2023/11/27 16:40:48 by kpourcel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-// 1. Fonction qui récupère ce qui est lu et l'envoie dans notre variable statique 
+/* 1. Fonction qui récupère ce qui est lu et l'envoie 
+dans notre variable statique */
 char	*read_and_stock(int fd, char *buff)
 {
 	char	*stash;
