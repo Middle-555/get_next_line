@@ -6,7 +6,7 @@
 /*   By: kpourcel <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 14:04:16 by kpourcel          #+#    #+#             */
-/*   Updated: 2023/11/27 16:40:48 by kpourcel         ###   ########.fr       */
+/*   Updated: 2023/11/27 18:53:06 by kpourcel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,9 +100,10 @@ char	*get_next_line(int fd)
 	static char	*buffer = NULL;
 	char		*line;
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (fd < 0 || BUFFER_SIZE <= 0 || read (fd,0,0) < 0)
 	{
 		free (buffer);
+		buffer = (NULL);
 		return (NULL);
 	}
 	buffer = read_and_stock(fd, buffer);
